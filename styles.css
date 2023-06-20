@@ -1,0 +1,16 @@
+h1{
+    background: brown;
+}
+
+.first-paragraph{
+    text-align: end;
+    background: aqua;
+    margin-top: 48px;
+    margin-left: 50px;
+}
+.second-paragraph{
+    font-family:  Century, serif;
+    font-weight: bold;
+    padding-top: 50px;
+    padding-left: 50px;
+}
