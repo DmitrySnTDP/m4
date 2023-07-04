@@ -1,0 +1,11 @@
+- создать проект
+django-admin startproject name project
+
+- запустить сервер
+python .\manage.py runserver
+
+-остановить сервер 
+ctrl+c
+
+-создать приложение
+python .\manage.py startapp name_приложения
