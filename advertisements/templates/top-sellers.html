@@ -9,12 +9,12 @@
 {% block content %}
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
-      <a class="nav-link"  href="/">
+      <a class="nav-link"  href="{% url 'index' %}">
         <span style="font-weight: bold;">Главная</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href=""><span style="font-weight: bold;">Топ продавцов</span>
+      <a class="nav-link active" aria-current="page" href="{% url 'top-sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
       </a>
     </li>
     <li class="nav-item">
