@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'index.html')
+    advertisements = advertisements.objects.all()
+    context = {'advertisements':advertisements}
+    return render(request, 'index.html', context)
 
 
 def lessonFour(request):
