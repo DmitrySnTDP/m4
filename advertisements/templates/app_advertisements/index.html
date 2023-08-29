@@ -9,7 +9,7 @@
 {% block content %}
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'index' %}">
+      <a class="nav-link active" aria-current="page" href="{% url 'main-page' %}">
         <span style="font-weight: bold;">Главная</span>
       </a>
     </li>
@@ -28,17 +28,17 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="login">
+      <a class="nav-link" href="{% url 'login' %}">
         <span style="font-weight: bold;">Войти</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="profile">
+      <a class="nav-link" href="{% url 'profile' %}">
         <span style="font-weight: bold;">Профиль</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{% url 'logout' %}">
         <span style="font-weight: bold;">Выйти</span>
       </a>
     </li>

@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/fontello.css">
-  <title>Login</title>
-</head>
 
-<body>
+{% block title %}
+Логин
+{% endblock %}
 
+{% block content %}
 
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{% url 'main-page' %}">
         <span style="font-weight: bold;">Главная</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="top-sellers.html"><span style="font-weight: bold;">Топ продавцов</span>
+      <a class="nav-link" href="{% url 'top-sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="advertisement-post.html">
+      <a class="nav-link" href="{% url 'adv-post' %}">
         <span style="font-weight: bold;">Разместить объявление</span>
       </a>
     </li>
@@ -35,17 +29,17 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="login.html">
+      <a class="nav-link" href="{% url 'login' %}">
         <span style="font-weight: bold;">Войти</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="profile.html">
+      <a class="nav-link" href="{% url 'profile' %}">
         <span style="font-weight: bold;">Профиль</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{% url 'logout' %}">
         <span style="font-weight: bold;">Выйти</span>
       </a>
     </li>
@@ -58,12 +52,17 @@
       </div>
     </div>
   </div>
+  {% if error %}
+  <div class="col-sm-4 offset-4 w-25">
+    <div class="form-label bg-warning" style="margin: 10px 0px"> {{ error }} </div>
+  </div>
     <form method="post">
+      {% csrf_token %}
       <div class="row mb-3">
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Username</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="text" class="form-control form-control-lg">
+            <input id="username" name="username" type="text" class="form-control form-control-lg">
           </div>
         </div>
       </div>
@@ -71,7 +70,7 @@
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Password</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="password" class="form-control form-control-lg">
+            <input id="password" name="password" type="password" class="form-control form-control-lg">
           </div>
         </div>
       </div>
@@ -82,6 +81,4 @@
       </div>
     </form>
   </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  {% endblock %}
