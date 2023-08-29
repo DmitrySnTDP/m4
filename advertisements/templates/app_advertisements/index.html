@@ -22,8 +22,9 @@
         <span style="font-weight: bold;">Разместить объявление</span>
       </a>
     </li>
+    {% if not user.is_authenticated %}
     <li class="nav-item">
-      <a class="nav-link" href="register">
+      <a class="nav-link" href="{% url 'register' %}">
         <span style="font-weight: bold;">Регистрация</span>
       </a>
     </li>
@@ -32,6 +33,7 @@
         <span style="font-weight: bold;">Войти</span>
       </a>
     </li>
+    {% else %}
     <li class="nav-item">
       <a class="nav-link" href="{% url 'profile' %}">
         <span style="font-weight: bold;">Профиль</span>
@@ -42,6 +44,7 @@
         <span style="font-weight: bold;">Выйти</span>
       </a>
     </li>
+    {% endif %}
   </ul>
 
   <div id="carouselExampleControls" class="carousel slide bg-primary" data-bs-ride="carousel">
@@ -86,9 +89,9 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Еще что-нибудь</a>
         </li>
       </ul>
-      <form class="row g-3">
+      <form class="row g-3" method="get">
         <div class="col-auto w-50">
-          <input type="text" class="form-control">
+          <input neme="query" value="{% if title %} {{ title }} {% endif %}" type="text" class="form-control">
         </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-success mb-3">Найти</button>
@@ -100,16 +103,17 @@
       <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <a href="advertisement.html" class="nav-link">
-              <img src="{% if adv.image %} {{ adv.image.url }} {% else %} {% static 'img/mypic.png' %} {% endif %}" class="img-fluid rounded-start" alt="Card title">
+            <a href="{{ adv.get_absolute_url }}" class="nav-link">
+              <img src="{% if adv.image %} {{ adv.image.url }} {% else %} {% static 'img/mypic.png' %} {% endif %}"
+               class="img-fluid rounded-start" alt="Card title">
             </a>
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">
-                <a href="advertisement.html" class="nav-link"><strong>{{ adv.title }}</strong></a>
+                <a href="{{ adv.get_absolute_url }}" class="nav-link"><strong>{{ adv.title }}</strong></a>
               </h5>
-              <a href="advertisement.html" class="nav-link">
+              <a href="{{ adv.get_absolute_url }}" class="nav-link">
                 <p class="card-text">
                   {{ adv.description }}
                 </p>

@@ -9,3 +9,11 @@ ctrl+c
 
 -создать приложение
 python .\manage.py startapp name_приложения
+
+
+Advertisement.objects.filter(price__gt=5000)
+gt = greater than
+gte -->>   >=
+lte -->>  <=
+lt = less than
+Advertisement.objects.filter(price=5000) #равенство
